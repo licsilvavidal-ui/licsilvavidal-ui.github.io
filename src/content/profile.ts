@@ -1,0 +1,73 @@
+export type Locale = "es" | "en";
+
+export const profile = {
+  name: "Carolina Silva Vidal",
+  email: "lic.silvavidal@gmail.com",
+  linkedin: "https://www.linkedin.com/in/carolinasilvavidal/",
+  peopleNook: "https://thepeoplenook.com/",
+};
+
+export const content = {
+  es: {
+    title: "Carolina Silva Vidal — People & Talent para startups",
+    description:
+      "Carolina Silva Vidal es Founder & People Partner en The People Nook. Especialista en recruiting, People Operations y construcción de equipos para startups.",
+    switchLabel: "English",
+    switchHref: "/en/",
+    nav: ["Sobre mí", "Experiencia", "Proyectos", "Contacto"],
+    eyebrow: "People & Talent · Startups · AI",
+    hero: "Construyo equipos y sistemas de People que ayudan a las startups a crecer.",
+    lead: "Soy Carolina Silva Vidal. Acompaño a founders y equipos de Estados Unidos y Europa a contratar mejor, ordenar sus operaciones de People y crear experiencias más humanas.",
+    primaryCta: "Hablemos",
+    secondaryCta: "Conoce mi trabajo",
+    location: "Desde Benidorm, España · trabajo remoto",
+    aboutTitle: "La persona detrás de los procesos",
+    about: "Mi recorrido une Talent Acquisition, People Operations y construcción de negocio. Me gusta entrar cuando aún hay preguntas abiertas: transformar la ambigüedad en procesos claros, documentados y sostenibles. Combino criterio humano con herramientas de IA para investigar mejor, acelerar el trabajo operativo y dedicar más tiempo a las conversaciones que importan.",
+    stats: [["5+", "años en People & Talent"], ["150+", "contrataciones lideradas"], ["3–4", "semanas de time-to-hire promedio"]],
+    experienceTitle: "Experiencia",
+    experienceIntro: "De construir la función de People desde cero a fundar una boutique de recruiting.",
+    jobs: [
+      ["2025 — hoy", "Founder & People Partner", "The People Nook", "Fundé y dirijo una boutique de recruiting y talent advisory para startups. Acompaño a founders en hiring strategy, talent mapping y employer branding; también construí la operación, el onboarding y los playbooks del equipo."],
+      ["2025 — 2026", "Talent Acquisition Lead", "Refindable", "Rediseñé el proceso de contratación y pasé a un modelo de búsqueda outbound. Implementé un ATS en Notion y entregué shortlists de finalistas en aproximadamente dos semanas por rol."],
+      ["2021 — 2025", "Head of People", "Kubikware", "Construí la función de People desde cero y lideré más de 150 contrataciones en ingeniería, producto, diseño y negocio. Desarrollé sistemas de entrevistas, onboarding, experiencia de empleados y operaciones para un equipo remoto."],
+      ["2018 — 2021", "College Advisor & HR", "Pontificia Universidad Católica Argentina", "Acompañé a estudiantes en su recorrido académico y profesional y participé en selección, formación y onboarding interno."],
+    ],
+    projectsTitle: "Lo que estoy construyendo",
+    projectsIntro: "Proyectos donde se cruzan talento, sistemas y nuevas formas de trabajar.",
+    projects: [["The People Nook", "Recruiting y asesoría de talento para startups que necesitan contratar con criterio, velocidad y una experiencia cercana.", profile.peopleNook], ["Recruiting OS", "Un sistema operativo de búsquedas, candidatos, ownership y rutinas de equipo para hacer escalable una operación de recruiting.", ""], ["Atrium", "Una startup en construcción para repensar cómo se encuentran personas y equipos en el nuevo mundo del trabajo.", ""]],
+    contactTitle: "¿Construimos algo juntos?",
+    contactBody: "Si estás formando un equipo, diseñando People desde cero o quieres conversar sobre talent y AI, escríbeme.",
+    footer: "People & Talent, con criterio humano.",
+  },
+  en: {
+    title: "Carolina Silva Vidal — People & Talent for startups",
+    description:
+      "Carolina Silva Vidal is Founder & People Partner at The People Nook, specialising in recruiting, People Operations and building teams for startups.",
+    switchLabel: "Español",
+    switchHref: "/",
+    nav: ["About", "Experience", "Projects", "Contact"],
+    eyebrow: "People & Talent · Startups · AI",
+    hero: "I build teams and People systems that help startups grow.",
+    lead: "I’m Carolina Silva Vidal. I work with founders and teams across the US and Europe to hire better, bring structure to People operations, and create more human experiences.",
+    primaryCta: "Let’s talk",
+    secondaryCta: "Explore my work",
+    location: "Based in Benidorm, Spain · working remotely",
+    aboutTitle: "The person behind the process",
+    about: "My work brings together Talent Acquisition, People Operations and business building. I like joining when the questions are still open: turning ambiguity into clear, documented and sustainable processes. I combine human judgment with AI tools to research more deeply, speed up operations and make more room for the conversations that matter.",
+    stats: [["5+", "years in People & Talent"], ["150+", "hires led"], ["3–4", "weeks average time-to-hire"]],
+    experienceTitle: "Experience",
+    experienceIntro: "From building a People function from scratch to founding a recruiting boutique.",
+    jobs: [
+      ["2025 — present", "Founder & People Partner", "The People Nook", "I founded and lead a recruiting and talent advisory boutique for startups. I advise founders on hiring strategy, talent mapping and employer branding, and built the team’s operations, onboarding and playbooks."],
+      ["2025 — 2026", "Talent Acquisition Lead", "Refindable", "I redesigned the hiring process and shifted to an outbound search model. I implemented a Notion ATS and delivered finalist shortlists in approximately two weeks per role."],
+      ["2021 — 2025", "Head of People", "Kubikware", "I built the People function from scratch and led more than 150 hires across engineering, product, design and business. I developed interview systems, onboarding, employee experience and operations for a remote team."],
+      ["2018 — 2021", "College Advisor & HR", "Pontificia Universidad Católica Argentina", "I guided students through their academic and career paths and contributed to internal hiring, training and onboarding."],
+    ],
+    projectsTitle: "What I’m building",
+    projectsIntro: "Work at the intersection of talent, systems and new ways of working.",
+    projects: [["The People Nook", "Recruiting and talent advisory for startups that need to hire with judgment, speed and a personal touch.", profile.peopleNook], ["Recruiting OS", "An operating system for searches, candidates, ownership and team routines that makes a recruiting operation scalable.", ""], ["Atrium", "A startup in progress rethinking how people and teams find each other in the new world of work.", ""]],
+    contactTitle: "Shall we build something together?",
+    contactBody: "If you’re building a team, starting a People function or want to talk about talent and AI, get in touch.",
+    footer: "People & Talent, with human judgment.",
+  },
+} as const;
