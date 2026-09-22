@@ -1,0 +1,84 @@
+---
+import { content, profile, type Locale } from "../content/profile";
+
+const { locale } = Astro.props as { locale: Locale };
+const t = content[locale];
+const anchors = ["about", "experience", "projects", "contact"];
+const home = locale === "es" ? "/" : "/en/";
+---
+
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main navigation">
+    <a class="brand" href={home}>{profile.name}<span aria-hidden="true">.</span></a>
+    <div class="nav-links">
+      {t.nav.map((item, index) => <a href={`#${anchors[index]}`}>{item}</a>)}
+      <a class="language" href={t.switchHref} lang={locale === "es" ? "en" : "es"}>{t.switchLabel}</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero wrap">
+    <div class="hero-orbit" aria-hidden="true"></div>
+    <p class="eyebrow gsap-hero">{t.eyebrow}</p>
+    <h1 class="gsap-hero">{t.hero}</h1>
+    <p class="lead gsap-hero">{t.lead}</p>
+    <div class="actions gsap-hero">
+      <a class="button" href={`mailto:${profile.email}`}>{t.primaryCta} <span aria-hidden="true">↗</span></a>
+      <a class="button secondary" href="#experience">{t.secondaryCta} <span aria-hidden="true">↓</span></a>
+    </div>
+    <p class="location gsap-hero">{t.location}</p>
+  </section>
+
+  <section id="about" class="section block">
+    <div class="wrap">
+      <div class="two-column reveal">
+        <div><p class="eyebrow">01 / {t.nav[0]}</p><h2>{t.aboutTitle}</h2></div>
+        <p class="large-copy">{t.about}</p>
+      </div>
+      <dl class="stats reveal">
+        {t.stats.map(([value, label]) => <div class="stat"><dt>{value}</dt><dd>{label}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience" class="section block">
+    <div class="wrap">
+      <div class="reveal"><p class="eyebrow">02 / {t.nav[1]}</p><h2>{t.experienceTitle}</h2><p class="section-intro">{t.experienceIntro}</p></div>
+      <div class="jobs">
+        {t.jobs.map(([period, role, company, description]) => <article class="job reveal"><time>{period}</time><div><h3>{role}</h3><p class="company">{company}</p><p>{description}</p></div></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section block">
+    <div class="wrap">
+      <div class="reveal"><p class="eyebrow">03 / {t.nav[2]}</p><h2>{t.projectsTitle}</h2><p class="section-intro">{t.projectsIntro}</p></div>
+      <div class="projects">
+        {t.projects.map(([name, description, url], index) => <article class="project-card reveal"><span class="project-number">0{index + 1}</span><div><h3>{name}</h3><p>{description}</p>{url && <a class="text-link" href={url} rel="noopener noreferrer">{name} <span aria-hidden="true">↗</span></a>}</div></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap reveal"><p class="eyebrow">04 / {t.nav[3]}</p><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><a class="email-link" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a></div>
+  </section>
+</main>
+
+<footer><div class="wrap footer-inner"><span>© {profile.name} · {t.footer}</span><a href={profile.linkedin} rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></footer>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reducedMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".gsap-hero", { y: 24, opacity: 0, stagger: 0.12, duration: 0.85, ease: "power3.out" });
+    gsap.utils.toArray<HTMLElement>(".reveal").forEach((element) => {
+      gsap.from(element, { y: 28, opacity: 0, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 88%", once: true } });
+    });
+    gsap.to(".hero-orbit", { rotation: 12, x: 20, y: -10, duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  }
+</script>
