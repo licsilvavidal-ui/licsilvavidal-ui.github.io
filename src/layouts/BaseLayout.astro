@@ -1,0 +1,54 @@
+---
+import "../styles/global.css";
+import { profile, type Locale } from "../content/profile";
+
+const { locale, title, description } = Astro.props as {
+  locale: Locale;
+  title: string;
+  description: string;
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "Founder & People Partner",
+  description,
+  email: `mailto:${profile.email}`,
+  homeLocation: { "@type": "Place", name: "Benidorm, Spain" },
+  worksFor: { "@type": "Organization", name: "The People Nook", url: profile.peopleNook },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Pontificia Universidad Católica Argentina" },
+  sameAs: [profile.linkedin, profile.peopleNook],
+};
+
+const homePath = locale === "es" ? "/" : "/en/";
+const alternatePath = locale === "es" ? "/en/" : "/";
+const canonicalUrl = new URL(homePath, Astro.site);
+const alternateUrl = new URL(alternatePath, Astro.site);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    <meta name="robots" content="index,follow,max-snippet:-1" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={locale === "es" ? "es_ES" : "en_US"} />
+    <meta property="og:url" content={canonicalUrl.toString()} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={locale} href={canonicalUrl} />
+    <link rel="alternate" hreflang={locale === "es" ? "en" : "es"} href={alternateUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
