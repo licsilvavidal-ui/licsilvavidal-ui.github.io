@@ -1,0 +1,6 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Landing from "../components/Landing.astro";
+import { content } from "../content/profile";
+---
+<BaseLayout locale="es" title={content.es.title} description={content.es.description}><Landing locale="es" /></BaseLayout>
