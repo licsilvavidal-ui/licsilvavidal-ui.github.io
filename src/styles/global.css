@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #23372e;
+  --color-paper: #f7f4ec;
+  --color-muted: #58675e;
+  --color-line: #d9dfd3;
+  --color-accent: #9e6748;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply m-0 bg-paper font-sans text-ink antialiased; line-height: 1.65; }
+* { box-sizing: border-box; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2 { @apply font-display font-medium tracking-[-0.05em]; line-height: 1.05; }
+h1 { font-size: clamp(3.4rem, 7.8vw, 7rem); max-width: 1000px; }
+h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); }
+h3 { font-size: 1.2rem; line-height: 1.15; }
+.wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+.skip-link { @apply absolute left-4 top-[-100px] bg-white px-3 py-2; }
+.skip-link:focus { top: 10px; z-index: 20; }
+.site-header { @apply sticky top-0 z-10 border-b border-line bg-paper/95 backdrop-blur; }
+.nav { @apply flex min-h-[74px] items-center justify-between gap-5; }
+.brand { @apply whitespace-nowrap text-sm font-bold tracking-[-0.03em] no-underline; }
+.nav-links { @apply flex items-center gap-6; }
+.nav-links a { @apply text-sm font-semibold no-underline transition-colors hover:text-accent; }
+.nav-links .language { @apply rounded-full border border-line px-3 py-1.5 text-xs; }
+.hero { @apply relative py-[clamp(90px,14vw,170px)] pb-[105px]; }
+.hero-orbit { @apply pointer-events-none absolute right-[4%] top-[12%] -z-10 aspect-square w-[clamp(160px,24vw,340px)] rounded-full border border-[#c8d3bf]; box-shadow: 0 0 0 38px rgb(200 211 191 / 16%); }
+.eyebrow { @apply mb-7 text-xs font-bold uppercase tracking-[0.2em] text-accent; }
+.lead { @apply mt-7 max-w-[720px] text-[clamp(1.1rem,2vw,1.4rem)] text-muted; }
+.actions { @apply my-8 flex flex-wrap gap-3.5; }
+.button { @apply inline-flex min-h-12 items-center justify-center rounded-full bg-ink px-[22px] py-2.5 text-sm font-bold text-white no-underline transition-colors hover:bg-[#385743]; }
+.button.secondary { @apply border border-ink bg-transparent text-ink hover:bg-[#e9eee5]; }
+.location { @apply text-sm text-muted; }
+.section { @apply border-t border-line py-24; }
+.two-column { @apply grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-[9%]; }
+.large-copy { @apply text-lg text-muted; }
+.stats { @apply mt-12 grid grid-cols-1 gap-0 sm:grid-cols-3 sm:gap-6; }
+.stat { @apply border-t border-ink py-4 sm:pt-[18px]; }
+.stat dt { @apply font-display text-[2.7rem] font-medium; }
+.stat dd { @apply text-sm text-muted; }
+.section-intro { @apply mb-12 text-lg text-muted; }
+.job { @apply grid gap-2 border-t border-line py-7 md:grid-cols-[180px_1fr] md:gap-7; }
+.job time, .project-number { @apply text-xs font-bold tracking-[0.04em] text-accent; }
+.job h3 { @apply mb-1; }
+.job .company { @apply mb-3 text-sm font-bold; }
+.job p:not(.company) { @apply m-0 max-w-[68ch] text-sm text-muted; }
+.projects { @apply grid gap-4 md:grid-cols-3; }
+.project-card { @apply flex min-h-[280px] flex-col justify-between rounded-lg border border-line bg-[#fffefa] p-7; }
+.project-card p { @apply mt-3 text-sm text-muted; }
+.text-link { @apply mt-5 inline-block text-sm font-bold underline underline-offset-4 hover:text-accent; }
+.contact { @apply bg-[#dce5d8] py-24; }
+.contact p:not(.eyebrow) { @apply max-w-[68ch] text-lg text-[#475c4d]; }
+.email-link { @apply mt-5 inline-block break-all text-[clamp(1.15rem,3vw,2rem)] font-bold underline underline-offset-8; }
+footer { @apply py-8 text-sm text-muted; }
+.footer-inner { @apply flex flex-wrap justify-between gap-4; }
+.footer-inner a { @apply underline underline-offset-4; }
+@media (max-width: 700px) { .nav { min-height: 64px; } .nav-links { gap: 12px; } .nav-links a:not(.language) { display: none; } .wrap { width: min(100% - 32px, 1160px); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
